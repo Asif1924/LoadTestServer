@@ -12,6 +12,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +27,19 @@ public class PingServerController {
     @Autowired
     public PingServerController(PingServerService pingServerService){
         this.pingServerService=pingServerService;
+    }
+
+    @GetMapping(path="/getserverip")
+    public String getServerIP(){
+        InetAddress ip;
+        String server = "";
+        try {
+            ip = InetAddress.getLocalHost();
+            server="Server IP address : " + ip.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return server;
     }
 
     @GetMapping(path="/getip")
