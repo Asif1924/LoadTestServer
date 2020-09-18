@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.alliconsulting.server</groupId>
 	<artifactId>LoadTestServer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>LoadTestServer</name>
 	<description>Asif's Load Testing Server Project</description>
 
@@ -43,6 +43,8 @@
 		</dependency>
 	</dependencies>
 
+	<packaging>jar</packaging>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -50,6 +52,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>${project.name}-${version}-testing</finalName>
 	</build>
+
 
 </project>
